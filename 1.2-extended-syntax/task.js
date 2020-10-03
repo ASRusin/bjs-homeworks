@@ -19,18 +19,18 @@ function getAverageMark(marks) {
   let sum = 0;
   for (mark of marks) {
     count += 1;
-    if (count <= 5) {
+    if (count === 6) {
+      console.log("Количество оценок больше пяти");
+      marks.splice(5);
+      count = 5;
+      break;
+    } else if (count <= 5) {
       sum += mark;
     } else continue;
   }
-  if (count > 5) {
-    console.log("Количество оценок больше пяти");
-    marks.splice(5, count - 5);
-    count = 5;
-  } else if (count === 0) {
+  if (count === 0) {
     return 0;
   }
-  let averageMark;
 
   return (averageMark = sum / count);
 }
