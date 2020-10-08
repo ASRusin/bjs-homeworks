@@ -1,22 +1,19 @@
 "use strict";
 function calculateTotalMortgage(percent, contribution, amount, date) {
   // код для задачи №1 писать здесь
-  if (Number.isFinite(percent)) {
-  } else {
+  if (!Number.isFinite(percent) && Number.isNaN(percent)) {
     console.log(
       `Параметр "Процентная ставка" содержит неправильное значение ${percent}`
     );
   }
 
-  if (Number.isFinite(contribution)) {
-  } else {
+  if (!Number.isFinite(contribution) && Number.isNaN(contribution)) {
     console.log(
       `Параметр "Начальный взнос" содержит неправильное значение ${contribution}`
     );
   }
 
-  if (Number.isFinite(amount)) {
-  } else {
+  if (!Number.isFinite(amount) && Number.isNaN(amount)) {
     console.log(
       `Параметр "Общая стоимость" содержит неправильное значение ${amount}`
     );
