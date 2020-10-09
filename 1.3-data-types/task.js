@@ -10,7 +10,6 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   }
 
   percent /= 100;
-
   let amountOfCredit = amount - contribution;
   const today = new Date();
   let creditTerm =
@@ -23,7 +22,6 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   let totalAmount = payment * creditTerm + contribution - contribution;
   totalAmount = totalAmount.toFixed(2);
   totalAmount = Number(totalAmount);
-
   console.log(totalAmount);
 
   return totalAmount;
@@ -31,15 +29,17 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
 
 function getGreeting(name) {
   // код для задачи №2 писать здесь
-  let greeting = `Привет, мир! Меня зовут ${name ? name : "Аноним"}`;
+  let greeting = `Привет, мир! Меня зовут ${
+    name == false ||
+    name === "" ||
+    name === "null" ||
+    name === "undefined" ||
+    name === '""'     
+      ? "Аноним"
+      : name
+  }`;
 
-  // if (name) {
-  //   greeting = `Привет, мир! Меня зовут ${name}`;
-  // } else {
-  //   greeting = "Привет, мир! Меня зовут Аноним";
-  // }
-
-  // console.log(greeting);
+  // let greeting = `Привет, мир! Меня зовут ${name ? name : "Аноним"}`;
 
   return greeting;
 }
