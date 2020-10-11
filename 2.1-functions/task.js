@@ -94,3 +94,39 @@ console.log(getAverageScore({
     psychology: [5,5,5,4,3,2,1],
     informatics: [4,5,4,5,5]
 }));
+
+//Задача №3:
+function getDecodedValue(secret) {
+    if (secret === 1){
+        return 'Эмильо';        
+    } else {
+        return 'Родриго';
+    };
+};
+
+function getPersonData(secretData){
+    let decoding = {
+        firstName: getDecodedValue(secretData.aaa),
+        lastName: getDecodedValue(secretData.bbb)
+    };
+    return decoding;
+}
+
+//Проверки:
+
+console.log(getPersonData({
+    aaa: 0,
+    bbb: 0
+}));
+console.log(getPersonData({
+    aaa: 1,
+    bbb: 0
+}));
+console.log(getPersonData({
+    aaa: 0,
+    bbb: 1
+}));
+console.log(getPersonData({
+    aaa: 1,
+    bbb: 1
+}));
