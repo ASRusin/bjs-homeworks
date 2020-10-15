@@ -35,7 +35,7 @@ function checkBirthday(birthday) {
     const diff = now - birthday;
     const year = 1000 * 60 * 60 * 24 * 365;
     const day = 1000 * 60 * 60 * 24;
-    const age = diff / (year - 4 * day);
+    const age = (diff + 4 * day) / year;
 
     // код для задачи №3 писать здесь
     if (age > 18) return true;
