@@ -1,3 +1,5 @@
+// Задача №1. Печатное издание
+
 class PrintEditionItem {
     constructor (name, releaseDate, pagesCount){
         this.name = name;
@@ -56,5 +58,35 @@ class DetectiveBook extends Book {
     constructor(author, name, releaseDate, pagesCount){
         super(author, name, releaseDate, pagesCount);
         this.type = 'detective'
+    };
+};
+
+// Задача №2. Библиотека
+
+class Library {
+    constructor(name){
+        this.name = name;
+        this.books = [];
+    };
+    addBook(book){
+        if (book.state > 30){
+            this.books.push(book);
+        };
+    };
+    findBookBy(type, value){
+        for (let key of this.books){
+            if (key[type] === value){
+                return key;
+            };
+        };
+        return null;
+    };
+    giveBookByName(bookName){
+        const findBook = this.findBookBy('name', bookName);
+        if (findBook !== null){
+            this.books.splice(findBook, 1);
+            return findBook;
+        };
+        return findBook;
     };
 };
