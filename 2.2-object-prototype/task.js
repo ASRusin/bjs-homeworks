@@ -1,15 +1,11 @@
-function isPalindrome (text){
-    text = this;
+function isPalindrome (){    
     let textInverted = "";
-    text = text.split(' ').join('');
+    const text = this.split(' ').join('');
     for (let i = text.length - 1; i >= 0; i--){
         textInverted += text[i];
     };                                    
-    if (textInverted.toLocaleUpperCase() === text.toLocaleUpperCase()){
-        return true;
-    } else {
-        return false;
-    };
+    return textInverted.toLocaleUpperCase() === text.toLocaleUpperCase();
+        
 };
 
 String.prototype.isPalindrome = isPalindrome;
@@ -31,13 +27,13 @@ function getAverageMark(marks) {
 
 function checkBirthday(birthday) {
     const now = + new Date();
-    birthday = Date.parse(birthday);
-    const diff = now - birthday;
+    const parsedBirthday = Date.parse(birthday);
+    const diff = now - parsedBirthday;
     const year = 1000 * 60 * 60 * 24 * 365;
     const day = 1000 * 60 * 60 * 24;
     const age = (diff + 4 * day) / year;
 
     // код для задачи №3 писать здесь
-    if (age > 18) return true;
-    else return false;
+    return age > 18;
+    
 }
