@@ -61,6 +61,24 @@ class DetectiveBook extends Book {
     };
 };
 
+// ПРОВЕРКИ:
+
+const sherlock = new PrintEditionItem("Полное собрание повестей и рассказов о Шерлоке Холмсе в одном томе", 2019, 1008);
+
+console.log(sherlock.releaseDate); 
+console.log(sherlock.state); 
+sherlock.fix();
+console.log(sherlock.state); 
+
+
+const picknick = new FantasticBook("Аркадий и Борис Стругацкие", "Пикник на обочине", 1972, 168);
+
+console.log(picknick.author); 
+picknick.state = 10;
+console.log(picknick.state); 
+picknick.fix();
+console.log(picknick.state); 
+
 // Задача №2. Библиотека
 
 class Library {
@@ -71,7 +89,7 @@ class Library {
     addBook(book){
         if (book.state > 30){
             this.books.push(book);
-        };
+        }; 
     };
     findBookBy(type, value){
         for (let key of this.books){
@@ -84,12 +102,36 @@ class Library {
     giveBookByName(bookName){
         const findBook = this.findBookBy('name', bookName);
         if (findBook !== null){
-            this.books.splice(findBook, 1);
+            this.books.splice(this.books.indexOf(findBook) , 1);
             return findBook;
         };
         return findBook;
     };
 };
+
+// ПРОВЕРКИ:
+
+const library = new Library("Библиотека имени Ленина");
+
+library.addBook(new DetectiveBook("Артур Конан Дойл", "Полное собрание повестей и рассказов о Шерлоке Холмсе в одном томе", 2019, 1008));
+library.addBook(new FantasticBook("Аркадий и Борис Стругацкие", "Пикник на обочине", 1972, 168));
+library.addBook(new NovelBook("Герберт Уэллс", "Машина времени", 1895, 138));
+library.addBook(new Magazine("Мурзилка", 1924, 60));
+library.addBook(new FantasticBook("Какой-то автор", "Интересная книга", 1919, 868));
+
+console.log(library.findBookBy("name", "Властелин колец")); 
+console.log(library.findBookBy("releaseDate", 1924).name); 
+console.log(library.findBookBy("releaseDate", 1919).name);
+
+console.log("Количество книг до выдачи: " + library.books.length); 
+library.giveBookByName("Машина времени");
+console.log("Количество книг после выдачи: " + library.books.length); 
+
+const myBook = library.giveBookByName("Интересная книга");
+myBook.state = 1;
+myBook.fix();
+
+library.addBook(myBook);
 
 // Задача №3. Школьный журнал
 
@@ -143,3 +185,20 @@ class StudentLog{
         return count / Object.keys(this.subjects).length;
     };
 }; 
+
+// ПРОВЕРКИ:
+
+const log = new StudentLog('Олег Никифоров');
+
+log.addGrade(2, 'algebra');
+log.addGrade(4, 'algebra');
+log.addGrade(5, 'geometry');
+log.addGrade(4, 'geometry');
+log.addGrade('отлично!', 'math');
+log.addGrade(25, 'geometry')
+
+console.log(log.getAverageBySubject('geometry')); 
+console.log(log.getAverageBySubject('algebra')); 
+console.log(log.getAverageBySubject('math')); 
+
+console.log(log.getTotalAverage());
