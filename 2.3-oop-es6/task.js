@@ -153,7 +153,8 @@ class StudentLog{
             };             
             return this.subjects[subject].length;
         } else {            
-            return `Вы пытались поставить оценку ${grade} по предмету ${subject}. Допускаются только числа от 1 до 5.\n${this.subjects[subject] ? this.subjects[subject].length : 0}`; 
+            console.log(`Вы пытались поставить оценку ${grade} по предмету ${subject}. Допускаются только числа от 1 до 5.`);
+            return this.subjects[subject] ? this.subjects[subject].length : 0; 
         };      
        
     };
