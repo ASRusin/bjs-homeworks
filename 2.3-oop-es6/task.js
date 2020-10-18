@@ -90,3 +90,56 @@ class Library {
         return findBook;
     };
 };
+
+// Задача №3. Школьный журнал
+
+class StudentLog{
+    constructor(name){
+        this.studentName = name;
+        this.subjects = {};
+    };
+    getName(){
+        return this.studentName;
+    };
+    addGrade(grade, subject){
+        if (grade <= 5 && grade >= 1 && typeof(grade) === 'number'){
+            if (this.subjects[subject]){
+                this.subjects[subject].push(grade);
+            } else {
+                this.subjects[subject] = [];
+                this.subjects[subject].push(grade);
+            };             
+            return this.subjects[subject].length;
+        } else {            
+            return `Вы пытались поставить оценку ${grade} по предмету ${subject}. Допускаются только числа от 1 до 5.\n${this.subjects[subject] ? this.subjects[subject].length : 0}`; 
+        };      
+       
+    };
+    getAverageBySubject(subject){
+        
+        let count = 0;
+        if (this.subjects[subject]){
+            for (let mark of this.subjects[subject]){
+                count += mark;
+            };
+            if (count > 0){
+                return count / this.subjects[subject].length;
+            } else {
+                return 0;
+            };   
+        } else {
+            return 0;
+        };
+        
+    };
+    getTotalAverage(){
+        if (Object.keys(this.subjects).length === 0){
+            return 0;
+        };
+        let count = 0;
+        for (let subject in this.subjects){
+            count += this.getAverageBySubject(subject)
+        };
+        return count / Object.keys(this.subjects).length;
+    };
+}; 
