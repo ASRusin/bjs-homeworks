@@ -31,18 +31,12 @@ class Triangle{
            this.thirdSide = cA;
        }; 
     };
-    getPerimeter(){
-        const a = this.firstSide;
-        const b = this.secondSide;
-        const c = this.thirdSide;
-        return a + b + c;
+    getPerimeter(){        
+        return this.firstSide + this.secondSide + this.thirdSide;
     };
-    getArea(){
-        const a = this.firstSide;
-        const b = this.secondSide;
-        const c = this.thirdSide;
+    getArea(){        
         const p = this.getPerimeter() / 2;
-        const s = Math.sqrt(p * ((p - a) * (p - b) * (p - c)));
+        const s = Math.sqrt(p * ((p - this.firstSide) * (p - this.secondSide) * (p - this.thirdSide)));
         return Number(s.toFixed(3));
     };    
 };
