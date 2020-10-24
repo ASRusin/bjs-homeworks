@@ -51,7 +51,7 @@ function sum(...args) {
   };
 
   function compareArrays( arr1, arr2 ) {
-      return arr1.every((x, i) => x === arr2[i]);
+      return arr1.every((x, i) => x === arr2[i]) && arr1.length === arr2.length;
   };
 
   function memorize(fn, limit) {
@@ -60,14 +60,14 @@ function sum(...args) {
         const findResult = memory.find((i) => compareArrays(i.args, args)); 
         if (findResult) {
             return findResult.result;
-        } else {
-            const result = fn(...args);
-            if (memory.length === limit){
-                memory.unshift(0);
-            }             
-            memory.push({args: args, result: result});
-            return result;
-        };      
+        }; 
+        const result = fn(...args);
+        if (memory.length === limit){
+        memory.unshift();
+        }             
+        memory.push({args, result});
+        return result;
+              
       };
   };
 
