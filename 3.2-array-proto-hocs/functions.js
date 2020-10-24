@@ -18,3 +18,6 @@ function getReliableWeaponsNames(item){
     .map(weapon => weapon.name);
 };
 
+function getTotalDamage(){
+    return weapons.reduce((a, damage) => a += damage.attack, 0);
+};
