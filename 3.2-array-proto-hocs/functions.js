@@ -70,3 +70,47 @@ function sum(...args) {
         };      
       };
   };
+
+
+  // Необязательная честь:
+  function testCase(testFunction, timer){
+    const arr = [
+        [1,2,3], 
+        [1,2,3,4], 
+        [1,2,3,4,5], 
+        [1,2,3,2,1], 
+        [3,2,1,2,3], 
+        [1,2,3], 
+        [1,2,3,2,1], 
+        [1,2,3,4] 
+      ];
+    console.time(timer);
+    for (let i = 0; i < 100; i++){
+        arr.forEach((a) => testFunction(...a));
+    };
+    console.timeEnd(timer);
+  };
+// Проверки 
+//   const mSum = memorize(sum, 5);
+
+//   function altSum(...args) {     
+//     return args.reduce((sum, arg) => {
+//       return sum += +arg;
+//     }, 0);
+//   };
+
+//   const mAltSum = memorize(altSum, 5);
+
+//   console.log(testCase(sum, 'Время sum'));
+//  sum: 80801.155... ms - очень долго;
+
+
+//   console.log(testCase(mSum, 'Время mSum'));
+//  mSum: 202.236... ms - оптимизация помогла ускорить выполнение функции;
+
+//   console.log(testCase(altSum, 'Время altSum'));
+//  altSum: 0.376... ms - без задержки функция выполняется быстро;
+
+//   console.log(testCase(mAltSum, 'Время mAltSum'));
+//  mAltSum: 0.444... ms - в данном случае оптимизация только увеличила 
+//  количество выполняемого кода и соответственно время;
