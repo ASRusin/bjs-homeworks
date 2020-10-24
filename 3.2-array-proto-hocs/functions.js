@@ -1,3 +1,5 @@
+//Задача 1:
+
 console.clear();
 const weapons = [new Knife(), new Staff(), new Axe(), new StormStaff(), new LongBow(), new Bow()];
 function getNames(){
@@ -33,3 +35,38 @@ function getValuestCountToSumValues(numbers, sum) {
     return count;
 };
 
+// Задача 2:
+
+function sleep(milliseconds) 
+{
+  let e = new Date().getTime() + milliseconds;
+  while (new Date().getTime() <= e) {}
+};
+
+function sum(...args) {    
+    sleep(100); 
+    return args.reduce((sum, arg) => {
+      return sum += +arg;
+    }, 0);
+  };
+
+  function compareArrays( arr1, arr2 ) {
+      return arr1.every((x, i) => x === arr2[i]);
+  };
+
+  function memorize(fn, limit) {
+      const memory = [];
+      return function (...args){
+        const findResult = memory.find((i) => compareArrays(i.args, args)); 
+        if (findResult) {
+            return findResult.result;
+        } else {
+            const result = fn(...args);
+            if (memory.length === limit){
+                memory.unshift(0);
+            }             
+            memory.push({args: args, result: result});
+            return result;
+        };      
+      };
+  };
